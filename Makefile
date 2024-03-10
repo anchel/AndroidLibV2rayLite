@@ -14,7 +14,8 @@ fetchDep:
 	# git clone https://github.com/anchel/v2ray-core.git $(shell go env GOPATH)/src/v2ray.com/core
 	go get -d github.com/anchel/AndroidLibV2rayLite
 
-ANDROID_HOME?=$(HOME)/android-sdk-linux
+SOFTINSTALL_HOME?=/data/softinstall
+ANDROID_HOME?=$(SOFTINSTALL_HOME)/android-sdk-linux
 export ANDROID_HOME
 PATH:=$(PATH):$(GOPATH)/bin
 export PATH

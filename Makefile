@@ -3,15 +3,15 @@ pb:
 		@echo "pb Start"
 asset:
 	mkdir -p assets data
-	bash gen_assets.sh download
+	# bash gen_assets.sh download
 	cp -v data/*.dat assets/
 	#cd assets;curl https://raw.githubusercontent.com/2dust/AndroidLibV2rayLite/master/data/geosite.dat > geosite.dat		
 	#cd assets;curl https://raw.githubusercontent.com/2dust/AndroidLibV2rayLite/master/data/geoip.dat > geoip.dat
 
 fetchDep:
 	go get -v golang.org/x/mobile/cmd/...
-	mkdir -p $(shell go env GOPATH)/src/v2ray.com/core
-	git clone https://github.com/v2fly/v2ray-core.git $(shell go env GOPATH)/src/v2ray.com/core
+	# mkdir -p $(shell go env GOPATH)/src/v2ray.com/core
+	# git clone https://github.com/v2fly/v2ray-core.git $(shell go env GOPATH)/src/v2ray.com/core
 	go get -d github.com/2dust/AndroidLibV2rayLite
 
 ANDROID_HOME?=$(HOME)/android-sdk-linux
@@ -19,9 +19,10 @@ export ANDROID_HOME
 PATH:=$(PATH):$(GOPATH)/bin
 export PATH
 downloadGoMobile:
-	cd ~ ;curl -L https://raw.githubusercontent.com/2dust/AndroidLibV2rayLite/master/ubuntu-cli-install-android-sdk.sh | sudo bash -
-	ls ~
-	ls ~/android-sdk-linux/
+	# cd ~ ;curl -L https://raw.githubusercontent.com/2dust/AndroidLibV2rayLite/master/ubuntu-cli-install-android-sdk.sh | sudo bash -
+	cp ubuntu-cli-install-android-sdk.sh /data/softinstall;cd /data/softinstall;sudo bash ubuntu-cli-install-android-sdk.sh
+	ls /data/softinstall
+	ls /data/softinstall/android-sdk-linux/
 
 BuildMobile:
 	gomobile init
